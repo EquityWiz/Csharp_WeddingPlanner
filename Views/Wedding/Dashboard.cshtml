@@ -1,0 +1,39 @@
+@model List<Wedding>
+
+<div class="container row flex justify-content-around">
+    @foreach (Wedding W in Model)
+    {
+        bool alreadyLiked = W.AttendWed.Any(l => l.UserId == Context.Session.GetInt32("UserId"));
+        <div class="card p-3 bg-white text-black shadow m-3 rounded" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-center">@W.WedderF & @W.WedderS</h5>
+                <p class="card-subtitle mb-2 text-muted text-center">@W.Date</p>
+                <p class="card-text text-center">@W.AttendWed.Count Guests Are Attending</p>
+                <div class="row flex justify-content-around">
+                    <a asp-action="Details" asp-controller="Wedding" asp-route-weddingId="@W.WeddingId" class="card-link">Details</a>
+                    @if(@W.UserId != Context.Session.GetInt32("UserId"))
+                    {
+                        <form asp-action="Like" asp-controller="Wedding" asp-route-weddingId="@W.WeddingId">
+                            <button class="btn btn-info btn-sm btn-outline-secondary active" role="button" aria-pressed="true">
+                                @if(alreadyLiked)
+                                {
+                                    <span>UnAttend</span>
+                                }
+                                else
+                                {
+                                    <span>Attend</span>
+                                }
+                            </button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="Delete" asp-controller="Wedding" asp-route-weddingId="@W.WeddingId">
+                            <button class="btn btn-outline-danger btn-sm active" role="button" aria-pressed="true">Delete</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

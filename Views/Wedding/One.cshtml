@@ -1,0 +1,19 @@
+@model Wedding
+
+<h3 class="text-left m-2 ml-3 font-weight-light">@Model.WedderF & @Model.WedderS's Wedding</h3>
+<div class="container row flex justify-content-around">
+    <div class="card p-4 bg-white shadow-sm rounded-left col" style="width: 600; height: 450;">
+        <h6 class="card-title">Date @Model.Date</h6>
+        <h6 class="card-title">Attendees</h6>
+        @foreach (var p in Model.AttendWed)
+        {
+            <h6 class="card-subtitle m-1 text-muted">@p.User.FirstName @p.User.LastName</h6>
+        }
+    </div>
+    <div class="col border rounded-right shadow-sm p-0">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d26857.086815202427!2d-117.14887679999998!3d32.7090176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1650422467796!5m2!1sen!2sus"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>

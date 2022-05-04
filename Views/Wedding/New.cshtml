@@ -1,0 +1,31 @@
+@model Wedding
+
+<div class="container row flex justify-content-center bg-info rounded p-2">
+    <div class="card p-4 bg-white shadow-sm mb-1 rounded col-5">
+        <h2 class="text-center font-weight-light mb-2">Wedding Information</h2>
+        <form asp-action="NewPost" asp-controller="Wedding" method="POST">
+                <div class="form-row row m-1">
+                    <div class="form-row col-md-6">
+                        <span asp-validation-for="WedderF"></span>
+                        <input asp-for="WedderF" class="form-control" placeholder="Wedder One">
+                    </div>
+                    <h4 class="text-center text-info font-italic">&</h4>
+                    <div class="form-row col-md-6">
+                        <span asp-validation-for="WedderS"></span>
+                        <input asp-for="WedderS" class="form-control" placeholder="Wedder Two">
+                    </div>
+                </div>
+                <div class="form-group m-1">
+                    <label asp-for="Date"></label>
+                    <span asp-validation-for="Date"></span>
+                    <input asp-for="Date" class="form-control input-date">
+                </div>
+                <div class="form-group m-1">
+                    <label asp-for="Address"></label>
+                    <span asp-validation-for="Address"></span>
+                    <input asp-for="Address" class="form-control" placeholder="Address">
+                </div>
+                <button type="submit" class="btn btn-info m-1 mt-2">Add Wedding</button>
+        </form>
+    </div>
+</div>

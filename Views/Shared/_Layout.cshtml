@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WeddingPlanner</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WeddingPlanner</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Wedding" asp-action="Dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Wedding" asp-action="New">Add Event</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+                    @if(Context.Session.GetString("Username") != null)
+                            {
+                                <form asp-controller="Home" asp-action="Logout">
+                                <div class="btn-group position-absolute mt-1 mr-4" style="right: 5px; top:5px;" role="group">
+                                    <button class="btn btn-light shadow btn-rounded mr-2" disabled>Hello, @Context.Session.GetString("Username")</button>
+                                    <button class="btn btn-info shadow btn-rounded active" role="button" aria-pressed="true">Logout</button>
+                                </div>
+                                </form>
+                            }
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-white" style="background-color: rgba(66,98,105,0.5);">
+        <div class="container flex row justify-content-between">
+            <div class="ml-3 p-1">
+                &copy; 2022 - WeddingPlanner - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+            <div class="mr-2 p-1">
+                <a class="btn btn-primary" style="background-color: #333333;" href="#!" role="button">
+                <i class="fab fa-github"></i>
+                </a>
+                <a class="btn btn-primary" style="background-color: #0082ca;" href="#!" role="button">
+                <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a class="btn btn-primary" style="background-color: #ac2bac;" href="#!" role="button">
+                <i class="fab fa-instagram"></i>
+                </a>
+                <a class="btn btn-primary" style="background-color: #ff4500;" href="#!" role="button">
+                <i class="fab fa-reddit-alien"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
